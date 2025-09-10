@@ -34,3 +34,33 @@ Next.js에 대해 더 알아보려면 다음 자료를 참고하세요:
 Next.js 앱을 가장 쉽게 배포하는 방법은 Next.js 제작사가 운영하는 [Vercel 플랫폼](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)을 사용하는 것입니다.
 
 자세한 내용은 [Next.js 배포 문서](https://nextjs.org/docs/app/building-your-application/deploying)를 확인하세요.
+
+## Firebase 설정
+
+환경변수 파일 `.env.local`을 루트에 생성하고 다음 키를 채워주세요:
+
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
+
+선택(Analytics 사용 시에만):
+
+```bash
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
+```
+
+클라이언트에서 Firebase를 사용할 때는 `src/lib/firebase.ts`의 `getFirebase()`를 불러옵니다.
+
+```ts
+import { getFirebase } from '@/lib/firebase';
+
+export default async function Example() {
+  const { auth, db } = await getFirebase();
+  // ...use auth, db
+}
+```
